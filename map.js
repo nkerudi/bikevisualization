@@ -1,10 +1,10 @@
 // Import Mapbox as an ESM module
 import mapboxgl from 'https://cdn.jsdelivr.net/npm/mapbox-gl@2.15.0/+esm';
-import d3 from 'https://cdn.jsdelivr.net/npm/d3@7.8.5/+esm';
+import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 //check that mapbox gl js is loaded 
 console.log("Mapbox GL JS Loaded:", mapboxgl);
 // Set your Mapbox access token here
-mapboxgl.accessToken = 'pk.eyJ1IjoibmtlcnVkaSIsImEiOiJjbXA3NmxiengwMDNiMnRvYnhjOTdjaW55In0.fIyFyUwpxlxUP5R-m2zgvw';
+mapboxgl.accessToken = 'YOURMAPBOXACCESSTOKEN';
 
 const STATIONS_URL = 'https://dsc106.com/labs/lab07/data/bluebikes-stations.json';
 const TRAFFIC_URL = 'https://dsc106.com/labs/lab07/data/bluebikes-traffic-2024-03.csv';
@@ -94,7 +94,7 @@ map.on('load', async () => {
     'line-width': 4,
     'line-opacity': 0.6,
   };
-  map.addLAyer({
+  map.addLayer({
     id: 'boston-bike-lanes',
     type: 'line', 
     source: 'boston-routes',
@@ -171,7 +171,7 @@ map.on('load', async () => {
     map.on('move', updatePositions);
     map.on('zoom', updatePositions);
     map.on('resize', updatePositions);
-    map.on('movend', updatePositions);
+    map.on('moveend', updatePositions);
     const timeSlider = document.getElementById('time-slider');
     const selectedTime = document.getElementById('selected-time'); 
     const anyTimeLabel = document.getElementById('any-time');
