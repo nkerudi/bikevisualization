@@ -147,8 +147,11 @@ map.on('load', async () => {
         .attr('cy', d => getCoords(d).cy);
     }
     function updateToolTips() {
-      circles.select('title')
-        .text(d => `${d.totalTraffic} trips (${d.departures} departures, ${d.arrivals} arrivals)`);
+      circles.each(function (d) {
+        d3.select(this)
+          .select('title')
+          .text(`${d.totalTraffic} trips (${d.departures} departures, ${d.arrivals} arrivals)`);
+    });
     }
     function updateScatterPLot(timeFilter) {
       const filteredStations = computeStationTraffic(baseStations, timeFilter);

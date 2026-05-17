@@ -37,20 +37,21 @@ header label {
 }
 #map svg {
   position: absolute;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  z-index: 10;
   width: 100%;
   height: 100%;
   pointer-events: none;
 }
-#map circle,
-.legend > div {
-  --color-departures: steelblue;
-  --color-arrivals: darkorange;
-  --color: color-mix(
-    in oklch,
-    var(--color-departures) calc(100% * var(--departure-ratio)),
-    var(--color-arrivals)
-  );
+
+#map circle {
+  fill: var(--color);
+  fill-opacity: 0.6;
+  stroke: white;
+  stroke-width: 1;
+  pointer-events: all;
+  cursor: pointer;
 }
 
 #map circle {
